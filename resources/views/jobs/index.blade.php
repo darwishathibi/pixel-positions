@@ -5,18 +5,22 @@
             <h1 class="text-4xl font-bold">Lets Find Your Dream Job</h1>
 
             <form action="" class="mt-6">
-                <input type="text" placeholder="Search jobs..." class="border border-white/10 rounded-xl px-5 py-4 bg-white/10 w-full max-w-xl">
+                <input type="text" placeholder="Search jobs..."
+                    class="border border-white/10 rounded-xl px-5 py-4 bg-white/10 w-full max-w-xl">
             </form>
         </section>
         <section>
             <x-section-heading>
-                Top Jobs
+                Featured Jobs
             </x-section-heading>
 
             <div class="grid lg:grid-cols-3 gap-4 mt-6">
+                @foreach ($featuredJobs as $job)
+                    <x-job-card :$job />
+                @endforeach
+                {{-- <x-job-card />
                 <x-job-card />
-                <x-job-card />
-                <x-job-card />
+                <x-job-card /> --}}
             </div>
 
         </section>
@@ -27,7 +31,7 @@
             </x-section-heading>
 
             <div class="mt-6">
-                <x-tag size="base">Design</x-tag>
+                {{-- <x-tag size="base">Design</x-tag>
                 <x-tag size="base">Development</x-tag>
                 <x-tag size="base">Marketing</x-tag>
                 <x-tag size="base">Sales</x-tag>
@@ -35,7 +39,11 @@
                 <x-tag size="base">Human Resources</x-tag>
                 <x-tag size="base">Finance</x-tag>
                 <x-tag size="base">IT</x-tag>
-                <x-tag size="base">Legal</x-tag>
+                <x-tag size="base">Legal</x-tag> --}}
+
+                @foreach ($tags as $tag)
+                    <x-tag :$tag />
+                @endforeach
             </div>
         </section>
 
@@ -43,9 +51,13 @@
             <x-section-heading>Recent Jobs</x-section-heading>
 
             <div class="mt-6">
+
+                @foreach ($jobs as $job)
+                    <x-job-card-wide :$job />
+                @endforeach
+                {{-- <x-job-card-wide />
                 <x-job-card-wide />
-                <x-job-card-wide />
-                <x-job-card-wide />
+                <x-job-card-wide /> --}}
             </div>
         </section>
     </div>
